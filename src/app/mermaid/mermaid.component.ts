@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { afterNextRender, Component } from "@angular/core";
+import mermaid from "mermaid";
 
 @Component({
   selector: 'app-mermaid',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './mermaid.component.css'
 })
 export class MermaidComponent {
-
+  constructor() {
+    afterNextRender({
+      read: () => {
+        void mermaid.init()
+      }
+    })
+  }
 }
